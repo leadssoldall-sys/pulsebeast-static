@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PulseBeast Stats – Real-Time Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --neon-blue: #00f0ff; --neon-red: #ff0055; }
+    body { background: #000; color: #fff; font-family: 'Arial', sans-serif; }
+    .neon-blue { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+    .neon-red { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
+    .stat-card { background: #111; border: 2px solid var(--neon-blue); border-radius: 1rem; padding: 2rem; }
+    .stat-card.red { border-color: var(--neon-red); }
+    .stat-number { font-size: 3rem; font-weight: bold; margin: 1rem 0; }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+  </style>
+</head>
+<body class="p-8">
+
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h1 class="text-6xl font-black neon-red mb-4">PULSEBEAST</h1>
+      <p class="text-2xl neon-blue">Real-Time Stats Dashboard</p>
+      <p class="text-gray-400 mt-4">Last updated: <span id="lastUpdated">--:--:--</span></p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      
+      <!-- Revenue -->
+      <div class="stat-card red">
+        <h2 class="text-2xl neon-red mb-2">💰 Revenue</h2>
+        <div class="stat-number neon-red" id="revenue">$0</div>
+        <p class="text-gray-400">Total from $99 sales</p>
+      </div>
+
+      <!-- Leads -->
+      <div class="stat-card">
+        <h2 class="text-2xl neon-blue mb-2">📊 Leads</h2>
+        <div class="stat-number neon-blue" id="leads">0</div>
+        <p class="text-gray-400">1 per $99 sale</p>
+      </div>
+
+      <!-- Calls -->
+      <div class="stat-card red">
+        <h2 class="text-2xl neon-red mb-2">📞 Calls</h2>
+        <div class="stat-number neon-red" id="calls">0</div>
+        <p class="text-gray-400">Phone Bot (coming soon)</p>
+      </div>
+
+    </div>
+
+    <!-- Upgrade Button -->
+    <div class="text-center mb-16">
+      <a href="https://square.link/u/kEIWPiKW" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 to-red-600 text-black px-12 py-6 rounded-2xl text-2xl font-bold hover:scale-105 transition shadow-2xl">
+        🚀 UPGRADE NOW – $99
+      </a>
+    </div>
+
+    <!-- Debug Info -->
+    <div class="bg-gray-900 rounded-2xl p-6 border border-gray-700">
+      <h3 class="text-xl neon-blue mb-4">📡 Webhook Setup</h3>
+      <p class="text-gray-300 mb-4">To enable real-time stats:</p>
+      <ol class="space-y-2 text-gray-400 list-decimal list-inside">
+        <li>Go to Square Dashboard → Developer → Webhooks</li>
+        <li>Add endpoint: <code class="bg-black p-2 rounded text-cyan-400">https://your-domain.vercel.app/api/webhook</code></li>
+        <li>Subscribe to: <code class="bg-black p-2 rounded text-cyan-400">payment.created</code> and <code class="bg-black p-2 rounded text-cyan-400">payment.updated</code></li>
+        <li>Copy Signature Key and add to Vercel env: <code class="bg-black p-2 rounded text-cyan-400">SQUARE_WEBHOOK_SIGNATURE_KEY</code></li>
+      </ol>
+    </div>
+
+  </div>
+
+  <script>
+    const API_ENDPOINT = '/api/webhook';
+    const REFRESH_INTERVAL = 5000; // 5 seconds
+
+    async function fetchStats() {
+      try {
+        const response = await fetch(API_ENDPOINT);
+        const data = await response.json();
+        
+        // Update display
+        document.getElementById('revenue').textContent = '$' + data.revenue.toFixed(2);
+        document.getElementById('leads').textContent = data.leads;
+        document.getElementById('calls').textContent = data.calls;
+        
+        // Format timestamp
+        const date = new Date(data.lastUpdated);
+        document.getElementById('lastUpdated').textContent = date.toLocaleTimeString();
+      } catch (error) {
+        console.error('Error fetching stats:', error);
+      }
+    }
+
+    // Fetch on load
+    fetchStats();
+
+    // Refresh every 5 seconds
+    setInterval(fetchStats, REFRESH_INTERVAL);
+  </script>
+
+</body>
+</html>

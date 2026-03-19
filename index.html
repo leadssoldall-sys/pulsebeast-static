@@ -47,7 +47,7 @@
       <h1 class="text-6xl font-black neon-red mb-6">PULSEBEAST</h1>
       <p class="text-3xl mb-8 neon-blue">AI Roofing Money Beast – Orlando Edition</p>
       <div class="inline-block">
-        <a href="https://square.link/u/kEIWPiKW" target="_blank" class="bg-cyan-500 text-black px-16 py-6 rounded-2xl text-3xl font-bold hover:scale-105 transition shadow-2xl shadow-cyan-500/50">
+        <a href="https://square.link/u/kEIWPiKW?redirect_url=" onclick="handleSquareCheckout(event)" class="bg-cyan-500 text-black px-16 py-6 rounded-2xl text-3xl font-bold hover:scale-105 transition shadow-2xl shadow-cyan-500/50">
           START FOR $99 – OWN YOUR PLATFORM
         </a>
       </div>
@@ -150,6 +150,28 @@
   </main>
 
   <script>
+    // Production Square Payment Link - LIVE MODE (NOT TEST)
+    const SQUARE_CHECKOUT_URL = 'https://square.link/u/kEIWPiKW';
+    const DASHBOARD_URL = window.location.origin + '/dashboard';
+
+    function handleSquareCheckout(event) {
+      localStorage.setItem('pulsebeast_post_payment', 'true');
+      localStorage.setItem('payment_timestamp', new Date().getTime());
+      window.open(SQUARE_CHECKOUT_URL, '_blank');
+      
+      const checkPayment = setInterval(() => {
+        const elapsed = new Date().getTime() - parseInt(localStorage.getItem('payment_timestamp') || 0);
+        if (elapsed > 300000) {
+          clearInterval(checkPayment);
+          return;
+        }
+        if (document.hasFocus() && localStorage.getItem('pulsebeast_post_payment') === 'true') {
+          localStorage.removeItem('pulsebeast_post_payment');
+          window.location.href = DASHBOARD_URL;
+        }
+      }, 2000);
+    }
+
     function sendToMiniGrok() {
       const input = document.getElementById('chat-input').value.trim();
       if (!input) return;
