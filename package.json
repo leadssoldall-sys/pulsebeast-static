@@ -1,0 +1,9 @@
+{
+  "name": "pulsebeast-static",
+  "version": "1.0.0",
+  "description": "PulseBeast - AI Roofing Beast",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "start": "echo 'Static site ready'"
+  }
+}

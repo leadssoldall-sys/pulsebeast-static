@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PulseBeast – AI Roofing Beast</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --neon-blue: #00f0ff; --neon-red: #ff0055; }
+    body { background: #000; color: #fff; font-family: 'Arial', sans-serif; }
+    .neon-blue { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+    .neon-red { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
+    .sidebar { background: #111; border-right: 1px solid var(--neon-blue); }
+    .sidebar a:hover { background: rgba(0, 240, 255, 0.1); }
+  </style>
+</head>
+<body class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar w-64 fixed h-screen overflow-y-auto p-6">
+    <h1 class="text-3xl font-bold neon-red mb-10">PULSEBEAST</h1>
+    <nav class="space-y-4 text-lg">
+      <a href="#home" class="block py-3 px-4 rounded-xl">Home</a>
+      <a href="#minigrok" class="block py-3 px-4 rounded-xl">MiniGrok AI</a>
+      <a href="#phonebot" class="block py-3 px-4 rounded-xl">Phone Bot</a>
+      <a href="#ebook" class="block py-3 px-4 rounded-xl">E-Book Writer</a>
+      <a href="#video" class="block py-3 px-4 rounded-xl">Video Studio</a>
+      <a href="#scripts" class="block py-3 px-4 rounded-xl">Script Templates</a>
+      <a href="#thumbnail" class="block py-3 px-4 rounded-xl">Thumbnail & Book Cover Maker</a>
+      <a href="#affiliate" class="block py-3 px-4 rounded-xl">Affiliate Shop</a>
+      <a href="#solar" class="block py-3 px-4 rounded-xl">Solar Upsell</a>
+      <a href="#workshop" class="block py-3 px-4 rounded-xl">Workshop & Training</a>
+      <a href="#calendar" class="block py-3 px-4 rounded-xl">Calendar & Auto-Post</a>
+      <a href="#reviews" class="block py-3 px-4 rounded-xl">Review Tool</a>
+      <a href="#traffic" class="block py-3 px-4 rounded-xl">Traffic Tools</a>
+      <a href="#funnel" class="block py-3 px-4 rounded-xl">Leads Funnel</a>
+      <a href="#contact" class="block py-3 px-4 rounded-xl">Contact</a>
+      <a href="#social" class="block py-3 px-4 rounded-xl">Social Share</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="ml-64 flex-1 p-10">
+
+    <!-- HERO -->
+    <section id="home" class="text-center mb-16">
+      <h1 class="text-6xl font-black neon-red mb-6">PULSEBEAST</h1>
+      <p class="text-3xl mb-8 neon-blue">AI Roofing Money Beast – Orlando Edition</p>
+      <div class="inline-block">
+        <a href="https://square.link/u/kEIWPiKW" target="_blank" class="bg-cyan-500 text-black px-16 py-6 rounded-2xl text-3xl font-bold hover:scale-105 transition shadow-2xl shadow-cyan-500/50">
+          START FOR $99 – OWN YOUR PLATFORM
+        </a>
+      </div>
+    </section>
+
+    <!-- MINIGROK CHAT -->
+    <section id="minigrok" class="bg-gray-900 rounded-3xl p-8 mb-16">
+      <h2 class="text-4xl mb-6 neon-blue">MiniGrok AI (Sarcastic Code Beast)</h2>
+      <div id="chat-output" class="h-96 overflow-y-auto bg-black p-6 rounded-2xl mb-6 space-y-4"></div>
+      <div class="flex gap-4">
+        <input id="chat-input" type="text" placeholder="Ask MiniGrok anything... (try 'write lead funnel code' or 'fix this code')" class="flex-1 bg-gray-800 p-4 rounded-xl text-white">
+        <button onclick="sendToMiniGrok()" class="bg-red-600 px-8 py-4 rounded-xl font-bold hover:bg-red-700">Send</button>
+      </div>
+    </section>
+
+    <!-- PHONE BOT -->
+    <section id="phonebot" class="bg-gray-900 rounded-3xl p-8 mb-16">
+      <h2 class="text-4xl mb-6 neon-red">Phone Bot (GoHighLevel Style – Per Minute Pre-Pay)</h2>
+      <p class="mb-4">Twilio or LMN • Aroa Voice • Website upload for training • Self-learning for different professions</p>
+      <button onclick="alert('Phone Bot: $0.15/min pre-pay. Upload your website for custom training.')" class="bg-cyan-500 text-black px-8 py-4 rounded-xl font-bold hover:scale-105">Start Phone Bot – $0.15/min</button>
+    </section>
+
+    <!-- E-BOOK WRITER -->
+    <section id="ebook" class="bg-gray-900 rounded-3xl p-8 mb-16">
+      <h2 class="text-4xl mb-6 neon-blue">E-Book Writer (Dream Machine)</h2>
+      <textarea id="ebook-idea" placeholder="Main idea, number of pages, title" class="w-full h-32 bg-gray-800 p-4 rounded-xl mb-4 text-white"></textarea>
+      <button onclick="generateEbook()" class="bg-cyan-500 text-black px-8 py-4 rounded-xl font-bold hover:scale-105">Generate E-Book</button>
+    </section>
+
+    <!-- VIDEO STUDIO -->
+    <section id="video" class="bg-gray-900 rounded-3xl p-8 mb-16">
+      <h2 class="text-4xl mb-6 neon-red">Video Studio (Dream Version of YouTube Tools)</h2>
+      <textarea id="video-prompt" placeholder="Prompt for YouTube Short" class="w-full h-32 bg-gray-800 p-4 rounded-xl mb-4 text-white"></textarea>
+      <button onclick="generateVideo()" class="bg-cyan-500 text-black px-8 py-4 rounded-xl font-bold hover:scale-105">Generate Video + Voice</button>
+    </section>
+
+    <!-- SOCIAL SHARE BUTTONS -->
+    <section id="social" class="mb-16">
+      <h2 class="text-4xl mb-8 neon-blue">Post to All Socials</h2>
+      <div class="flex flex-wrap gap-4">
+        <a href="https://www.youtube.com/shorts" target="_blank" class="bg-red-600 px-6 py-3 rounded-xl hover:scale-105">YouTube Shorts</a>
+        <a href="https://www.facebook.com" target="_blank" class="bg-blue-600 px-6 py-3 rounded-xl hover:scale-105">Facebook</a>
+        <a href="https://www.tiktok.com" target="_blank" class="bg-black px-6 py-3 rounded-xl border border-white hover:scale-105">TikTok</a>
+        <a href="https://www.reddit.com" target="_blank" class="bg-orange-600 px-6 py-3 rounded-xl hover:scale-105">Reddit</a>
+        <a href="https://www.instagram.com" target="_blank" class="bg-pink-600 px-6 py-3 rounded-xl hover:scale-105">Instagram</a>
+        <a href="https://www.threads.net" target="_blank" class="bg-gray-800 px-6 py-3 rounded-xl border border-white hover:scale-105">Threads</a>
+      </div>
+    </section>
+
+    <!-- 30 SCRIPT TEMPLATES -->
+    <section id="scripts" class="mb-16">
+      <h2 class="text-4xl mb-8 neon-red">30 Ready-Made Scripts (Copy-Paste)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-900 p-6 rounded-2xl">
+          <p class="mb-4">1. "Orlando roofers — tired of dead leads? PulseBeast gives you 99+ AI leads + phone bot for $99. Link in bio!"</p>
+          <button onclick="navigator.clipboard.writeText('Orlando roofers — tired of dead leads? PulseBeast gives you 99+ AI leads + phone bot for $99. Link in bio!')" class="bg-cyan-500 text-black px-4 py-2 rounded hover:scale-105">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- THUMBNAIL MAKER -->
+    <section id="thumbnail" class="bg-gray-900 rounded-3xl p-8 mb-16">
+      <h2 class="text-4xl mb-6 neon-blue">Thumbnail & Book Cover Maker (Instant)</h2>
+      <canvas id="thumb-canvas" width="1280" height="720" class="border border-cyan-500 rounded-2xl mb-6 w-full"></canvas>
+      <input id="thumb-text" placeholder="Thumbnail or Book Cover text" class="w-full bg-gray-800 p-4 rounded-xl mb-4 text-white">
+      <button onclick="makeThumbnail()" class="bg-red-600 px-8 py-4 rounded-xl font-bold hover:scale-105">Generate</button>
+    </section>
+
+    <!-- TRAFFIC TOOLS + FOLLOWER TIPS -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div class="bg-gray-900 rounded-3xl p-8">
+        <h2 class="text-3xl mb-6 neon-blue">10 Never-Seen Traffic Tools</h2>
+        <ul class="space-y-2">
+          <li>1. AI Comment Responder Bot</li>
+          <li>2. Viral Hook Generator</li>
+          <li>3. Auto-Hashtag Optimizer</li>
+          <li>4. Trending Sound Detector</li>
+          <li>5. Engagement Booster</li>
+        </ul>
+      </div>
+      <div class="bg-gray-900 rounded-3xl p-8">
+        <h2 class="text-3xl mb-6 neon-red">20 Ways to Grow YouTube Shorts Followers</h2>
+        <ul class="space-y-2">
+          <li>1. Post daily at peak times</li>
+          <li>2. Use trending sounds</li>
+          <li>3. Reply to comments with shorts</li>
+          <li>4. Cross-post to TikTok</li>
+          <li>5. Create series/playlists</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FUNNEL / CONTACT / CALENDAR -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-gray-900 rounded-3xl p-8"><h3 class="text-2xl neon-blue mb-4">Leads Funnel</h3><p>Track leads from capture to close</p></div>
+      <div class="bg-gray-900 rounded-3xl p-8"><h3 class="text-2xl neon-red mb-4">Contact Form</h3><p>Capture customer inquiries</p></div>
+      <div class="bg-gray-900 rounded-3xl p-8"><h3 class="text-2xl neon-blue mb-4">Calendar (Bookings)</h3><p>Schedule inspections & posts</p></div>
+    </section>
+
+  </main>
+
+  <script>
+    function sendToMiniGrok() {
+      const input = document.getElementById('chat-input').value.trim();
+      if (!input) return;
+      const output = document.getElementById('chat-output');
+      output.innerHTML += `<div class="p-4 bg-gray-800 rounded-2xl">You: ${input}</div>`;
+      let reply = "Yeah, genius... ";
+      if (input.toLowerCase().includes('code')) {
+        reply += "Here's code for a lead funnel:\n```js\nfunction captureLead(name, email) {\n  console.log(`Lead: ${name} - ${email}`);\n}\n```";
+      } else {
+        reply += "Ask me to write code, fix bugs, or roast your competition.";
+      }
+      output.innerHTML += `<div class="p-4 bg-red-900/50 rounded-2xl">MiniGrok: ${reply}</div>`;
+      output.scrollTop = output.scrollHeight;
+      document.getElementById('chat-input').value = '';
+    }
+
+    function makeThumbnail() {
+      const canvas = document.getElementById('thumb-canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ff0055';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00f0ff';
+      ctx.font = 'bold 100px Arial';
+      ctx.fillText(document.getElementById('thumb-text').value || 'ROOFING BEAST', 100, 400);
+    }
+
+    function generateEbook() {
+      alert("Generating E-Book... (Dream Version)");
+    }
+
+    function generateVideo() {
+      alert("Generating YouTube Short + voiceover... (Dream Version of YouTube Tools)");
+    }
+  </script>
+</body>
+</html>
