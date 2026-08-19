@@ -36,6 +36,7 @@
       <a href="#funnel" class="block py-3 px-4 rounded-xl">Leads Funnel</a>
       <a href="#contact" class="block py-3 px-4 rounded-xl">Contact</a>
       <a href="#social" class="block py-3 px-4 rounded-xl">Social Share</a>
+      <a href="#traffic-booster" class="block py-3 px-4 rounded-xl">Traffic Booster</a>
     </nav>
   </aside>
 
@@ -147,6 +148,43 @@
       <div class="bg-gray-900 rounded-3xl p-8"><h3 class="text-2xl neon-blue mb-4">Calendar (Bookings)</h3><p>Schedule inspections & posts</p></div>
     </section>
 
+    <!-- TRAFFIC BOOSTER SECTION -->
+    <section id="traffic-booster" class="bg-black py-16 border-t border-b border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-4 text-white">Get More Traffic & Sales Automatically</h2>
+        <p class="text-xl text-gray-400 mb-12">Share PulseBeast and watch leads roll in. One click = more roofers seeing your site.</p>
+
+        <!-- Social Share Buttons -->
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-12">
+          <button onclick="shareTo('twitter')" class="bg-black border border-blue-500 hover:bg-blue-500 hover:text-black text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2">
+            <span>𝕏</span> Share on X
+          </button>
+          <button onclick="shareTo('facebook')" class="bg-black border border-blue-600 hover:bg-blue-600 hover:text-white py-4 rounded-xl font-semibold">Share on Facebook</button>
+          <button onclick="shareTo('linkedin')" class="bg-black border border-blue-700 hover:bg-blue-700 py-4 rounded-xl font-semibold">LinkedIn</button>
+          <button onclick="shareTo('reddit')" class="bg-black border border-orange-500 hover:bg-orange-500 py-4 rounded-xl font-semibold">Reddit</button>
+          <button onclick="shareTo('tiktok')" class="bg-black border border-pink-500 hover:bg-pink-500 py-4 rounded-xl font-semibold">TikTok</button>
+          <button onclick="copyLink()" class="bg-black border border-green-500 hover:bg-green-500 py-4 rounded-xl font-semibold">Copy Link</button>
+        </div>
+
+        <!-- Viral Script Generator -->
+        <div class="max-w-2xl mx-auto bg-zinc-900 p-8 rounded-3xl">
+          <h3 class="text-2xl mb-6">Generate YouTube Short Script (Copy-Paste Ready)</h3>
+          <textarea id="script-prompt" class="w-full h-32 bg-zinc-800 text-white p-4 rounded-xl mb-4" placeholder="Orlando roofers struggling with leads..."></textarea>
+          <button onclick="generateScript()" class="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-xl text-white font-bold">Generate Viral Script</button>
+          <div id="script-output" class="mt-6 text-left bg-black p-6 rounded-xl hidden"></div>
+        </div>
+
+        <!-- Embed Code for Others -->
+        <div class="mt-16">
+          <h3 class="text-2xl mb-4">Give This to Other Roofers</h3>
+          <pre class="bg-zinc-900 p-6 rounded-xl text-left overflow-auto text-sm"><code>&lt;!-- PulseBeast Embed --&gt;
+&lt;a href="https://pulsebeast-9wkjtdkn.manus.space" target="_blank"&gt;
+  AI Roofing Leads + Phone Bot for $99
+&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script>
@@ -204,6 +242,41 @@
 
     function generateVideo() {
       alert("Generating YouTube Short + voiceover... (Dream Version of YouTube Tools)");
+    }
+
+    // Traffic Booster Functions
+    const siteUrl = window.location.origin;
+    const siteTitle = "PulseBeast - AI Roofing Beast for Orlando Roofers";
+
+    function shareTo(platform) {
+      let url = '';
+      if (platform === 'twitter') {
+        url = `https://twitter.com/intent/tweet?text=Orlando roofers: AI leads + phone bot + $99 white-label. Own PulseBeast now! ${siteUrl}`;
+      } else if (platform === 'facebook') {
+        url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}`;
+      } else if (platform === 'linkedin') {
+        url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(siteUrl)}`;
+      } else if (platform === 'reddit') {
+        url = `https://reddit.com/submit?url=${encodeURIComponent(siteUrl)}&title=${encodeURIComponent(siteTitle)}`;
+      } else if (platform === 'tiktok') {
+        alert("Copy this for TikTok: Orlando roofers - AI leads in 2026! " + siteUrl);
+        return;
+      }
+      window.open(url, '_blank');
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(siteUrl);
+      alert("Link copied! Share it in roofing groups.");
+    }
+
+    function generateScript() {
+      const prompt = document.getElementById('script-prompt').value || "Orlando roofers struggling with leads";
+      const script = `YouTube Short Script (15-30 sec):\n\n"Yo Orlando roofers — tired of chasing bad leads?\nThis is PulseBeast — my AI roofing platform.\n99 hot leads, phone bot that answers 24/7, satellite scans that quote in seconds.\n$99 one-time and you own it.\nFirst 3 get free setup.\nLink in bio — go make money roofing today!"\n\nHashtags: #OrlandoRoofing #RoofingLeads #PulseBeast #MetalRoofing`;
+      
+      const output = document.getElementById('script-output');
+      output.innerHTML = `<pre class="whitespace-pre-wrap">${script}</pre>`;
+      output.classList.remove('hidden');
     }
   </script>
 </body>
